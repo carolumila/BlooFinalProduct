@@ -75,6 +75,9 @@ struct Pesticides: View {
                     }
                     .pickerStyle(.segmented)
                     .padding()
+                    .onChange(of: usesPesticides) { tag in
+                        self.varStore.usesPesticides = usesPesticides
+                    }
     
                     if usesPesticides == 1 {
                         Divider()
@@ -187,6 +190,7 @@ struct Pesticides: View {
         .navigationBarHidden(true)
         .onAppear() {
             self.updateTable()
+            usesPesticides = self.varStore.usesPesticides
         }
     } // body
     

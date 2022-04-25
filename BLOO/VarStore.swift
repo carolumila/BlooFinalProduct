@@ -32,6 +32,8 @@ final class VarStore: ObservableObject {
             "view.preferences.irrigationCost": 0.0,
             "view.preferences.insecticideCost": 0.0,
             
+            "view.preferences.usesPesticides": 0,
+            
             "view.preferences.totalProductionCosts": 0.0,
             "view.preferences.yield": 0.0,
             "view.preferences.pricePerLb": 0.00
@@ -137,6 +139,12 @@ final class VarStore: ObservableObject {
     @Published var insecticideCost: Double = UserDefaults.standard.double(forKey: "view.preferences.insecticideCost") {
         didSet {
             UserDefaults.standard.set(insecticideCost, forKey: "view.preferences.insecticideCost")
+        }
+    }
+    
+    @Published var usesPesticides: Int = UserDefaults.standard.integer(forKey: "view.preferences.usesPesticides") {
+        didSet {
+            UserDefaults.standard.set(usesPesticides, forKey: "view.preferences.usesPesticides")
         }
     }
     
