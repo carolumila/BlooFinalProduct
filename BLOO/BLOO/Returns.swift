@@ -71,7 +71,7 @@ struct Returns: View {
                                 .frame(minWidth: 150, alignment: .leading)
                                 .padding()
                             Spacer()
-                            Text("\(yield, specifier: "%.2f")")
+                            Text("\(yield, specifier: "%.0f")")
                                 .font(Font.custom("Helvetica Neue Regular", size: 15))
                                 .padding()
                         }

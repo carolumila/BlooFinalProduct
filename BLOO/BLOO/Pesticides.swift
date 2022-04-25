@@ -172,6 +172,7 @@ struct Pesticides: View {
                     .isDetailLink(false)
                     .padding([.leading,.trailing,.top])
                     .onDisappear() {
+                        self.updateTable()
                         self.updateVars()
                     }
                 }
@@ -196,9 +197,17 @@ struct Pesticides: View {
         for amount in totalCostPerAcre {
             insecticideCost += amount
         }
+        
         let totalProductionCosts = hiveRentalCost + self.varStore.fertilizerCost + self.varStore.irrigationCost + self.varStore.budgetFixedCosts + self.varStore.budgetVariableCosts + insecticideCost
         
         self.varStore.totalProductionCosts = totalProductionCosts
+        
+        print("hiveRentalCost: \(hiveRentalCost)")
+        print("insecticideCost: \(insecticideCost)")
+        print("fertilizerCost: \(self.varStore.fertilizerCost)")
+        print("irrigationCost: \(self.varStore.irrigationCost)")
+        print("budgetFixedCosts: \(self.varStore.budgetFixedCosts)")
+        print("budgetVariablecosts: \(self.varStore.budgetVariableCosts)")
         
         print("totalProductionCosts: \(self.varStore.totalProductionCosts)")
         
@@ -224,8 +233,6 @@ struct Pesticides: View {
         
         print("yield: \(self.varStore.yield)\n")
         
-        
-        
     }
     
     func updateTable() {
@@ -233,6 +240,8 @@ struct Pesticides: View {
         var costPerAcre = 0.0
         var numberOfApplications = 0.0
         let indicies = [0,1,2,3,4,5]
+        print("costPerAcrePerApp: \(costPerAcrePerApp)")
+        print("numOfApp: \(numOfApp)")
         
         for index in indicies {
             costPerAcre = Double(costPerAcrePerApp[index])!
